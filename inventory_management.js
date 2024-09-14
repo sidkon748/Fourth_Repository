@@ -21,3 +21,14 @@ function displayProductDetails() {
     }
 }
 displayProductDetails(); //Runs the function
+
+//Create a Function to Calculate Total Inventory Value
+function calculateInventoryValue(inventory){
+    let totalValue = 0;
+    for (const item of inventory){
+        totalValue += item.quantity * item.price;
+    }
+    return totalValue;
+}
+const totalValue =calculateInventoryValue(inventory);
+console.log('Total Inventory: $${totalValue}');
