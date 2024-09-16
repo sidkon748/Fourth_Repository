@@ -92,12 +92,6 @@ console.log(`Total Inventory Value: $${totalValue}`);
 function processSale(name){
     let product = inventory.find(inventory=>inventory.name === name);
     return inventory ? inventory.find:'Product Unavailable';
-        if (product.quantity >= unitsSold) {
-            // Update the stock
-            updateStock(product, unitsSold);
-        } else {
-            console.log(`Not enough stock for ${productName}.`);
-        }
     } 
 
 console.log(processSale('Chair', -25));
