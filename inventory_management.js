@@ -1,13 +1,14 @@
 //Create an Inventory Array of Product Objects
+//Inventory for products and associated details
 const inventory = [
     { name: 'Watch', price: 110, quantity: 100, lowStockLevel: 25 },   
     { name: 'Television', price: 420, quantity: 53, lowStockLevel: 21 },  
     { name: 'Chair', price: 50, quantity: 79, lowStockLevel: 17 }, 
-    { name: 'Table', price: 90, quantity: 56, lowStockLevel: 53 },  
+    { name: 'Table', price: 90, quantity: 56, lowStockLevel: 58 },  
     { name: 'Bookshelf', price: 150, quantity: 38, lowStockLevel: 10 },
     { name: 'Sofa', price: 120, quantity: 95, lowStockLevel: 37 },   
     { name: 'Clock', price: 70, quantity: 37, lowStockLevel: 18 },  
-    { name: 'Desk', price: 40, quantity: 45, lowStockLevel: 25 }, 
+    { name: 'Desk', price: 40, quantity: 45, lowStockLevel: 55 }, 
     { name: 'Computer', price: 50, quantity: 56, lowStockLevel: 7 },  
     { name: 'Lamp', price: 70, quantity: 38, lowStockLevel: 11 }     
 ];
@@ -16,7 +17,7 @@ const inventory = [
 function displayProductDetails() {
     for (let i = 0; i < inventory.length; i++){
         const {name, price, quantity, lowStockLevel} = inventory[i]; // For loop constant for inventory product details
-        const stockStatus = quantity <= lowStockLevel ? "Low Stock" : "In Stock";
+        const stockStatus = quantity <= lowStockLevel ? "Low Stock" : "In Stock"; 
         // Logs details of each product
         console.log(`Product Name: ${name}, Product Price: $${price}`);
         console.log(`Product Stock Status: ${stockStatus}, Product Quantity: ${quantity}`);
@@ -51,6 +52,7 @@ function updateStock(productName, unitsSold) {
 console.log(`${productName} not available`);
 
 }
+//Uses functions to update product quantities for logged products
 updateStock('Clock', 18);
 updateStock('Watch', -37);
 updateStock('Television', 3);
@@ -73,9 +75,29 @@ checkLowStock(inventory);
 function calculateInventoryValue(inventory){
     let totalValue = 0;
     for (const item of inventory){
-        totalValue += item.quantity * item.price; // multiplies quantity by price for each product  
+        totalValue += item.quantity * item.price; // Multiplies quantity by price for each product  
     }
-    return totalValue;
+    return totalValue; // Returns multiplication result
 }
 const totalValue =calculateInventoryValue(inventory);
 console.log(`Total Inventory Value: $${totalValue}`);
+
+//Task 6
+//Create a Function to Process a Sale
+function processSale(name){
+    let product = inventory.find(inventory=>inventory.name === name);
+    return inventory ? inventory.find:'Product Unavailable';
+        // Check if there is enough stock
+        if (product.quantity >= unitsSold) {
+            // Update the stock
+            updateStock(product, unitsSold);
+        } else {
+            console.log(`Not enough stock for ${productName}.`);
+        }
+    } 
+
+console.log(processSale('Chair'));
+console.log(processSale('Lamp'));
+console.log(processSale('Sofa'));
+console.log(processSale('Clock'));
+console.log(processSale('Computer'));
