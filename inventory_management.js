@@ -1,3 +1,4 @@
+//Task 1
 //Create an Inventory Array of Product Objects
 //Inventory for products and associated details
 const inventory = [
@@ -13,6 +14,7 @@ const inventory = [
     { name: 'Lamp', price: 70, quantity: 38, lowStockLevel: 11 }     
 ];
 
+//Task 2
 //Create a Function to Display Product Details
 function displayProductDetails() {
     for (let i = 0; i < inventory.length; i++){
@@ -26,6 +28,7 @@ function displayProductDetails() {
 }
 displayProductDetails(); //Runs function
 
+// Task 3
 // Create a Function to Update Stock
 function updateStock(productName, unitsSold) {
     let productPresent = false;
@@ -59,10 +62,11 @@ updateStock('Television', 3);
 updateStock('Lamp', -8);
 updateStock('Bookshelf', 21);
 
+// Task 4
 // Create a Function to Check Low Stock Products
 function checkLowStock(inventory){
     inventory.forEach(product => {
-        if(product.quantity < product.lowStockLevel){
+        if(product.quantity < product.lowStockLevel){ // If statement for logging products whose quantity is less than lowStockLevel
             console.log(product.name);
         }
     }
@@ -71,6 +75,7 @@ function checkLowStock(inventory){
 console.log("List of Products That Need Restocking");
 checkLowStock(inventory);
 
+//Task 5
 //Create a Function to Calculate Total Inventory Value
 function calculateInventoryValue(inventory){
     let totalValue = 0;
@@ -82,7 +87,7 @@ function calculateInventoryValue(inventory){
 const totalValue =calculateInventoryValue(inventory);
 console.log(`Total Inventory Value: $${totalValue}`);
 
-//Task 6
+//Task 6 
 //Create a Function to Process a Sale
 function processSale(name){
     let product = inventory.find(inventory=>inventory.name === name);
@@ -95,8 +100,8 @@ function processSale(name){
         }
     } 
 
-console.log(processSale('Chair'));
-console.log(processSale('Lamp'));
-console.log(processSale('Sofa'));
-console.log(processSale('Clock'));
-console.log(processSale('Computer'));
+console.log(processSale('Chair', -25));
+console.log(processSale('Lamp', 37));
+console.log(processSale('Sofa', 11));
+console.log(processSale('Clock', 22));
+console.log(processSale('Computer', 25));
